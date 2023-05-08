@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class ProfileEdit extends Component {
   render() {
     return (
-      <div>
+      <div data-testid="page-profile-edit">
         <p>Page ProfileEdit</p>
       </div>
     );
