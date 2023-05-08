@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
+import AlbumCard from '../components/AlbumCard';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
+import searchAlbumsAPI from '../services/searchAlbumsAPI';
 
 class Search extends Component {
   constructor() {
     super();
     this.state = {
-      artistName: '',
+      nameArtist: '',
+      searchArtist: '',
       isButtonDisabled: true,
       loading: true,
-
+      albumsList: [],
     };
   }
 
@@ -18,36 +21,44 @@ class Search extends Component {
   }
 
   handleSearch(event) {
+    const { nameArtist } = this.state;
+    const currentArtist = nameArtist;
     event.preventDefault();
     this.setState({
-      artistName: '',
+      nameArtist: '',
       loading: true,
     }, async () => {
+      const albums = await searchAlbumsAPI(currentArtist);
+      this.setState({
+        loading: false,
+        searchArtist: currentArtist,
+        albumsList: albums,
+      });
     });
   }
 
   validateInputSearch({ target }) {
     const minLength = 2;
     this.setState({
-      artistName: target.value,
+      nameArtist: target.value,
       isButtonDisabled: target.value.length < minLength,
     });
   }
 
   render() {
-    const { artistName, isButtonDisabled, loading } = this.state;
+    const { nameArtist, searchArtist, albumsList,
+      isButtonDisabled, loading } = this.state;
     return (
       <div data-testid="page-search">
         <Header />
-        <div className="container">
+        <div>
           {loading ? <Loading /> : (
-            <div className="searchContainer">
+            <div>
               <form>
                 <input
                   type="text"
                   onChange={ (event) => this.validateInputSearch(event) }
-                  value={ artistName }
-                  className="searchArtistInput"
+                  value={ nameArtist }
                   data-testid="search-artist-input"
                   placeholder="Nome do artista"
                 />
@@ -60,7 +71,20 @@ class Search extends Component {
                   Pesquisar
                 </button>
               </form>
-
+              {searchArtist && (
+                <p>
+                  {`Resultado de álbuns de: ${searchArtist}`}
+                </p>
+              )}
+              {!albumsList.length && searchArtist
+                ? <p>Nenhum álbum foi encontrado</p>
+                : (
+                  <div>
+                    {albumsList.map(
+                      (album) => <AlbumCard album={ album } key={ album.collectionId } />,
+                    )}
+                  </div>
+                )}
             </div>
           )}
         </div>
