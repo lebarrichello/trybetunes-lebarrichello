@@ -60,3 +60,5 @@ class Header extends Component {
 }
 
 export default Header;
+
+// adicionando commit do requisito 4 que eu esqueci de commitar :S
