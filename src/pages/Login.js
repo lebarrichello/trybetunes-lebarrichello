@@ -40,16 +40,20 @@ class Login extends Component {
   render() {
     const { name, isButtonDisabled, logIn, loading } = this.state;
     return (
-      <div>
-        <h1>
-          TrybeTunes
-        </h1>
+      <div className="containerLogin">
+        <i />
+        <i />
+        <i />
         <div data-testid="page-login">
           {loading === true
             ? <Loading />
             : (
               <form>
+                <h1>
+                  TrybeTunes
+                </h1>
                 <input
+                  className="inputBx"
                   type="text"
                   onChange={ (event) => this.validateLoginInput(event) }
                   data-testid="login-name-input"
