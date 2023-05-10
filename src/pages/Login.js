@@ -40,37 +40,39 @@ class Login extends Component {
   render() {
     const { name, isButtonDisabled, logIn, loading } = this.state;
     return (
-      <div className="containerLogin">
-        <i />
-        <i />
-        <i />
-        <div data-testid="page-login">
-          {loading === true
-            ? <Loading />
-            : (
-              <form>
-                <h1>
-                  TrybeTunes
-                </h1>
-                <input
-                  className="inputBx"
-                  type="text"
-                  onChange={ (event) => this.validateLoginInput(event) }
-                  data-testid="login-name-input"
-                  value={ name }
-                  placeholder="Qual é o seu nome ?"
-                />
-                <button
-                  type="submit"
-                  onClick={ (event) => this.handleSubmit(event) }
-                  data-testid="login-submit-button"
-                  disabled={ isButtonDisabled }
-                >
-                  Entrar
-                </button>
-              </form>
-            )}
-          {logIn && <Redirect to="/search" />}
+      <div className="container">
+        <div className="containerLogin">
+          <i />
+          <i />
+          <i />
+          <div data-testid="page-login">
+            {loading === true
+              ? <Loading />
+              : (
+                <form>
+                  <h1>
+                    TrybeTunes
+                  </h1>
+                  <input
+                    className="inputBx"
+                    type="text"
+                    onChange={ (event) => this.validateLoginInput(event) }
+                    data-testid="login-name-input"
+                    value={ name }
+                    placeholder="Qual é o seu nome ?"
+                  />
+                  <button
+                    type="submit"
+                    onClick={ (event) => this.handleSubmit(event) }
+                    data-testid="login-submit-button"
+                    disabled={ isButtonDisabled }
+                  >
+                    Entrar
+                  </button>
+                </form>
+              )}
+            {logIn && <Redirect to="/search" />}
+          </div>
         </div>
       </div>
     );

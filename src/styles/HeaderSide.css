@@ -1,0 +1,62 @@
+body {
+  background: black;
+}
+
+header {
+  backdrop-filter: grayscale(80%);
+  background-color: #02120c;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: larger;
+  height: 100vh;
+  justify-content: left;
+  text-align: center;
+  width: 250px;
+}
+
+/* .filter {
+  background: rgba(248, 6, 6, 0.1);
+  height: 100vh;
+  opacity: 50%;
+  width: 24px;
+} */
+
+nav {
+  display: flex;
+  flex-direction: column;
+  font-size: larger;
+  gap: 40px;
+  height: 70vh;
+  justify-content: center;
+  text-align: center;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: #6cbd26;
+}
+
+.containerUser {
+  background-color: #6cbd26;
+  margin-top: 100px;
+}
+
+.icon {
+  font-size: 18px;
+  padding-right: 10px;
+}
+
+.profile {
+  padding-right: 35px;
+}
+
+.header-profile-img {
+  background-color: red;
+  border-radius: 50%;
+  width: 24px;
+}
