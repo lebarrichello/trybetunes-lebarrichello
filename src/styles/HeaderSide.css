@@ -37,9 +37,25 @@ a:hover {
   background-color: #6cbd26;
 }
 
+.logoHeader {
+  align-items: center;
+  display: flex;
+  font-size: medium;
+  justify-content: center;
+}
+
+.logoHeader a:hover {
+  background-color: transparent;
+}
+
 .containerUser {
-  background-color: #6cbd26;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: center;
   margin-top: 100px;
+  padding: 20px;
+  text-transform: capitalize;
 }
 
 .icon {
@@ -52,7 +68,44 @@ a:hover {
 }
 
 .header-profile-img {
-  background-color: red;
-  border-radius: 50%;
-  width: 24px;
+  background-color: lightgrey;
+  border-radius: 100%;
+  width: 60px;
 }
+
+.loadHeader {
+  justify-content: center;
+}
+
+.logoutHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+}
+
+.logoutHeader a:hover {
+  background-color: transparent;
+}
+
+.btnLogout {
+  background: none;
+  border: 2px solid white;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: large;
+  padding: 10px;
+  text-align: center;
+  width: 150px;
+}
+
+.btnLogout:hover {
+  border: 2px solid #6cbd26;
+  filter: drop-shadow(0 0  5px #6cbd26);
+}
+
+.btnLogout:active {
+  transform: scale(0.91);
+}
+

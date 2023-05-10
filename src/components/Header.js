@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { FiHeart, FiSearch, FiUser } from 'react-icons/fi';
+import { FiHeart, FiSearch, FiUser, FiLogOut } from 'react-icons/fi';
 import { getUser } from '../services/userAPI';
 import Loading from './Loading';
 import '../styles/HeaderSide.css';
@@ -28,11 +28,13 @@ class Header extends Component {
     return (
 
       <header data-testid="header-component">
-        <Link to="/">
-          <h1>
-            TrybeTunes
-          </h1>
-        </Link>
+        <div className="logoHeader">
+          <Link to="/">
+            <h1>
+              TrybeTunes
+            </h1>
+          </Link>
+        </div>
         <nav>
           <Link to="/search" data-testid="link-to-search">
             <FiSearch className="icon" />
@@ -60,7 +62,9 @@ class Header extends Component {
                   src="./images/default-profile.jpeg"
                   alt=""
                 />
-                <Loading />
+                <div className="loadHeader">
+                  <Loading />
+                </div>
               </>)
             : (
               <>
@@ -68,6 +72,18 @@ class Header extends Component {
                 <p data-testid="header-user-name">{user}</p>
               </>
             )}
+        </div>
+        <div className="logoutHeader">
+          <Link to="/">
+            <button
+              className="btnLogout"
+              type="submit"
+            >
+              <FiLogOut className="icon" />
+              {' '}
+              Sair
+            </button>
+          </Link>
         </div>
 
       </header>

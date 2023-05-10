@@ -1,0 +1,91 @@
+@keyframes quiet {
+
+  25% {
+    transform: scaleY(0.6);
+  }
+
+  50% {
+    transform: scaleY(0.4);
+  }
+
+  75% {
+    transform: scaleY(0.8);
+  }
+}
+
+@keyframes normal {
+
+  25% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(0.4);
+  }
+
+  75% {
+    transform: scaleY(0.6);
+  }
+}
+
+@keyframes loud {
+
+  25% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(0.4);
+  }
+
+  75% {
+    transform: scaleY(1.2);
+  }
+}
+
+.loadContainer {
+  display: flex;
+  height: 64px;
+  justify-content: space-between;
+
+
+  --boxSize: 8px;
+
+  --gutter: 4px;
+  width: calc((var(--boxSize) + var(--gutter)) * 5);
+}
+
+.loading {
+  animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  border-radius: 8px;
+  height: 100%;
+  transform: scaleY(0.4);
+  width: var(--boxSize);
+}
+
+.load1 {
+  animation-name: quiet;
+  background-color: white;
+}
+
+.load2 {
+  animation-name: normal;
+  background-color: #6cbd26;
+}
+
+.load3 {
+  animation-name: quiet;
+  background-color: #c9eeaa;
+}
+
+.load4 {
+  animation-name: loud;
+  background-color: #6cbd26;
+}
+
+.load5 {
+  animation-name: quiet;
+  background-color: white;
+}
