@@ -1,0 +1,72 @@
+.containerS {
+  display: flex;
+}
+
+.containerSearchBar {
+  background-color: #041a12;
+  display: flex;
+  height: 150px;
+  justify-content: center;
+  width: 100%;
+}
+
+.search {
+  border: 2px solid #c9eeaa;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+}
+
+.input {
+  background-color: transparent;
+  border: 0;
+  border-radius: 5px 0 0 5px;
+  color: white;
+  font-size: large;
+  padding: 9px;
+  width: 70%;
+}
+
+.input:focus {
+  outline: 0;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+}
+
+.btnSearch {
+  background: none;
+  border: 0;
+  border-radius: 0 5px 5px 0;
+  color: white;
+  cursor: pointer;
+  font-size: large;
+  margin-left: 70px;
+  padding: 9px;
+}
+
+.btnSearch .icon {
+  color: #c9eeaa;
+  font-size: 25px;
+}
+
+.btnSearch:active {
+  transform: scale(0.91);
+}
+
+@media only screen and ( min-width : 150px ) and ( max-width : 780px ) {
+
+  .search {
+    margin: 0 auto;
+    width: 95%;
+  }
+
+}
+

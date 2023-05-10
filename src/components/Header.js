@@ -26,52 +26,52 @@ class Header extends Component {
   render() {
     const { loading, user, userImg } = this.state;
     return (
-      <div className="filter">
-        <header data-testid="header-component">
-          <Link to="/">
-            <h1>
-              TrybeTunes
-            </h1>
+
+      <header data-testid="header-component">
+        <Link to="/">
+          <h1>
+            TrybeTunes
+          </h1>
+        </Link>
+        <nav>
+          <Link to="/search" data-testid="link-to-search">
+            <FiSearch className="icon" />
+            {' '}
+            Pesquisa
           </Link>
-          <nav>
-            <Link to="/search" data-testid="link-to-search">
-              <FiSearch className="icon" />
-              {' '}
-              Pesquisa
-            </Link>
-            <Link to="/favorites" data-testid="link-to-favorites">
-              <FiHeart className="icon" />
-              {' '}
-              Favoritas
-            </Link>
-            <Link className="profile" to="/profile" data-testid="link-to-profile">
-              <FiUser className="icon" />
-              {' '}
-              Perfil
+          <Link to="/favorites" data-testid="link-to-favorites">
+            <FiHeart className="icon" />
+            {' '}
+            Favoritas
+          </Link>
+          <Link className="profile" to="/profile" data-testid="link-to-profile">
+            <FiUser className="icon" />
+            {' '}
+            Perfil
 
-            </Link>
-          </nav>
-          <div className="containerUser">
-            { loading
-              ? (
-                <>
-                  <img
-                    className="header-profile-img"
-                    src="./images/default-profile.jpeg"
-                    alt=""
-                  />
-                  <Loading />
-                </>)
-              : (
-                <>
-                  <img src={ userImg } alt="" />
-                  <p data-testid="header-user-name">{user}</p>
-                </>
-              )}
-          </div>
+          </Link>
+        </nav>
+        <div className="containerUser">
+          { loading
+            ? (
+              <>
+                <img
+                  className="header-profile-img"
+                  src="./images/default-profile.jpeg"
+                  alt=""
+                />
+                <Loading />
+              </>)
+            : (
+              <>
+                <img src={ userImg } alt="" />
+                <p data-testid="header-user-name">{user}</p>
+              </>
+            )}
+        </div>
 
-        </header>
-      </div>
+      </header>
+
     );
   }
 }

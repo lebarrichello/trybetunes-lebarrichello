@@ -62,6 +62,7 @@ class Login extends Component {
                     placeholder="Qual é o seu nome ?"
                   />
                   <button
+                    className="btnLogin"
                     type="submit"
                     onClick={ (event) => this.handleSubmit(event) }
                     data-testid="login-submit-button"

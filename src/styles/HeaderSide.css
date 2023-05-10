@@ -1,7 +1,3 @@
-body {
-  background: black;
-}
-
 header {
   backdrop-filter: grayscale(80%);
   background-color: #02120c;

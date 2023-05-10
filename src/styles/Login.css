@@ -104,7 +104,7 @@ form .inputBx::placeholder {
   text-align: center;
 }
 
-form button {
+.btnLogin {
   background: #6cbd26;
   border: 2px solid #6cbd26;
   border-radius: 40px;
@@ -116,7 +116,7 @@ form button {
   width: 100%;
 }
 
-button:disabled {
+.btnLogin:disabled {
   background: transparent;
   border: 2px solid white;
   color: white;
