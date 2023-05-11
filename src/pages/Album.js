@@ -73,15 +73,15 @@ class Album extends Component {
     return (
       <div data-testid="page-album">
         <Header />
-        <div className="albumContainer">
+        <div>
           {loading ? <Loading /> : (
             <>
-              <div className="albumHeader">
+              <div>
                 <img src={ this.changeImgSize(thumbnail) } alt="" />
-                <div className="albumInfo">
+                <div>
                   <h3 data-testid="artist-name">{artistName}</h3>
                   <h2 data-testid="album-name">{collectionName}</h2>
-                  <div className="additionalInfo">
+                  <div>
                     <span>{genre}</span>
                     <span>{releaseDate.split('-')[0]}</span>
                     <span>
@@ -94,7 +94,7 @@ class Album extends Component {
                   </div>
                 </div>
               </div>
-              <div className="songsListContainer">
+              <div>
                 {playlist.map((track, index) => (
                   index > 0 && <MusicCard
                     track={ track }
@@ -114,7 +114,7 @@ class Album extends Component {
 }
 
 Album.propTypes = {
-  match: PropTypes.objectOf(PropTypes.any).isRequired,
+  match: PropTypes.shape(PropTypes.o).isRequired,
 };
 
 export default Album;

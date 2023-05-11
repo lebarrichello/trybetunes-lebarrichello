@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { BsPlayCircle } from 'react-icons/bs';
+import { FiPlay } from 'react-icons/fi';
 import { addSong, removeSong } from '../services/favoriteSongsAPI';
 
 class MusicCard extends Component {
@@ -38,14 +38,13 @@ class MusicCard extends Component {
     const { trackName, trackId, previewUrl,
       artworkUrl30, collectionName, trackNumber } = track;
     return (
-      <div className="songContainer">
+      <div>
         {showArtwork
-          && <img src={ artworkUrl30 } alt={ collectionName } className="songcard-img" />}
+          && <img src={ artworkUrl30 } alt={ collectionName } />}
         {!showArtwork && <span>{trackNumber}</span> }
         <h4>{trackName}</h4>
-        <BsPlayCircle size="1.6em" onClick={ (event) => this.showAudio(event) } />
+        <FiPlay size="1.6em" onClick={ (event) => this.showAudio(event) } />
         <audio
-          className="hidden"
           data-testid="audio-component"
           src={ previewUrl }
           controls
@@ -60,7 +59,6 @@ class MusicCard extends Component {
           <input
             id={ `check-${trackId}` }
             type="checkbox"
-            className="favoriteCheck"
             data-testid={ `checkbox-music-${trackId}` }
             onChange={ (event) => this.handleFavorite(event, trackId) }
             checked={ favoritesList.some((song) => song.trackId === trackId) }
@@ -77,10 +75,10 @@ MusicCard.defaultProps = {
 };
 
 MusicCard.propTypes = {
-  track: PropTypes.objectOf(PropTypes.any).isRequired,
+  track: PropTypes.shape(PropTypes.o).isRequired,
   toggleLoadingHandler: PropTypes.func.isRequired,
   updateHandler: PropTypes.func.isRequired,
-  favoritesList: PropTypes.arrayOf(PropTypes.any).isRequired,
+  favoritesList: PropTypes.shape(PropTypes.r).isRequired,
   showArtwork: PropTypes.bool,
 };
 
