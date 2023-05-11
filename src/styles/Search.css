@@ -1,5 +1,13 @@
+.containerPage {
+  background-color: #041a12;
+  display: flex;
+  flex-direction: row;
+}
+
 .containerS {
   display: flex;
+  flex-direction: column;
+
 }
 
 .containerSearchBar {
@@ -7,7 +15,7 @@
   display: flex;
   height: 150px;
   justify-content: center;
-  width: 100%;
+  width: 100vw;
 }
 
 .search {
@@ -59,6 +67,30 @@
 
 .btnSearch:active {
   transform: scale(0.91);
+}
+
+.containerResultsArtists {
+  background-color: #041a12;
+  max-height: 100vh;
+  max-width: 100vw;
+}
+
+.containerResultsArtists p {
+  color: white;
+  font-size: x-large;
+  text-align: center;
+}
+
+.containerAlbums {
+  background-color: #041a12;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+  max-height: 100vh;
+  max-width: 100vw;
+  overflow: auto;
 }
 
 @media only screen and ( min-width : 150px ) and ( max-width : 780px ) {

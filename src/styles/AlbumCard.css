@@ -1,0 +1,37 @@
+.card {
+  background-color: #02120c;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  text-decoration: none;
+  width: 150px;
+}
+
+.card:hover {
+  background-color: #05291b;
+}
+
+.card img {
+  border-radius: 4px;
+  box-shadow: 3px 3px 3px #000b07;
+  width: 100%;
+}
+
+.card .albumTitle {
+  color: white;
+  font-size: medium;
+  margin-bottom: auto;
+  max-width: 18ch;
+  overflow: hidden;
+  padding-top: 6px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card .artistName {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: small;
+  margin-top: auto;
+  text-align: left;
+}

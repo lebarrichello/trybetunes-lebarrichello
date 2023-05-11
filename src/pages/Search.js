@@ -51,10 +51,9 @@ class Search extends Component {
     const { nameArtist, searchArtist, albumsList,
       isButtonDisabled, loading } = this.state;
     return (
-      <div data-testid="page-search">
+      <div className="containerPage" data-testid="page-search">
+        <Header />
         <div className="containerS">
-          <Header />
-
           <div className="containerSearchBar">
             {loading ? <Loading /> : (
               <div>
@@ -77,27 +76,29 @@ class Search extends Component {
                     <FiSearch className="icon" />
                   </button>
                 </form>
-                {searchArtist && (
-                  <p>
-                    {`Resultado de álbuns de: ${searchArtist}`}
-                  </p>
-                )}
-                {!albumsList.length && searchArtist
-                  ? <p>Nenhum álbum foi encontrado</p>
-                  : (
-                    <div>
-                      {albumsList.map(
-                        (album) => (<AlbumCard
-                          album={ album }
-                          key={ album.collectionId }
-                        />),
-                      )}
-                    </div>
-                  )}
               </div>
             )}
           </div>
+          <div className="containerResultsArtists">
+            {searchArtist && (
+              <p>
+                {`Resultado de álbuns de: ${searchArtist}`}
+              </p>
+            )}
+            {!albumsList.length && searchArtist
+              ? <p>Nenhum álbum foi encontrado</p>
+              : (
+                <div className="containerAlbums">
+                  {albumsList.map(
+                    (album) => (<AlbumCard
+                      album={ album }
+                      key={ album.collectionId }
+                    />),
+                  )}
+                </div>
+              )}
 
+          </div>
         </div>
       </div>
     );
