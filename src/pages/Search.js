@@ -51,56 +51,56 @@ class Search extends Component {
     const { nameArtist, searchArtist, albumsList,
       isButtonDisabled, loading } = this.state;
     return (
-      <div className="containerPage" data-testid="page-search">
+      <div className="container__search" data-testid="page-search">
         <Header />
-        <div className="containerS">
-          <div className="containerSearchBar">
-            {loading ? <Loading /> : (
-              <div>
-                <form className="search">
-                  <input
-                    className="input"
-                    type="text"
-                    onChange={ (event) => this.validateInputSearch(event) }
-                    value={ nameArtist }
-                    data-testid="search-artist-input"
-                    placeholder="Busque pelo nome do artista ou banda"
-                  />
-                  <button
-                    className="btnSearch"
-                    type="submit"
-                    disabled={ isButtonDisabled }
-                    data-testid="search-artist-button"
-                    onClick={ (event) => this.handleSearch(event) }
-                  >
-                    <FiSearch className="icon" />
-                  </button>
-                </form>
+
+        <div className="searchbar">
+          {loading ? <Loading /> : (
+            <div>
+              <form className="search">
+                <input
+                  className="input"
+                  type="text"
+                  onChange={ (event) => this.validateInputSearch(event) }
+                  value={ nameArtist }
+                  data-testid="search-artist-input"
+                  placeholder="Busque pelo nome do artista ou banda"
+                />
+                <button
+                  className="btnSearch"
+                  type="submit"
+                  disabled={ isButtonDisabled }
+                  data-testid="search-artist-button"
+                  onClick={ (event) => this.handleSearch(event) }
+                >
+                  <FiSearch className="icon" />
+                </button>
+              </form>
+            </div>
+          )}
+        </div>
+        <div className="containerResultsArtists">
+          {searchArtist && (
+            <p>
+              {`Resultado de álbuns de: ${searchArtist}`}
+            </p>
+          )}
+          {!albumsList.length && searchArtist
+            ? <p>Nenhum álbum foi encontrado</p>
+            : (
+              <div className="containerAlbums">
+                {albumsList.map(
+                  (album) => (<AlbumCard
+                    album={ album }
+                    key={ album.collectionId }
+                  />),
+                )}
               </div>
             )}
-          </div>
-          <div className="containerResultsArtists">
-            {searchArtist && (
-              <p>
-                {`Resultado de álbuns de: ${searchArtist}`}
-              </p>
-            )}
-            {!albumsList.length && searchArtist
-              ? <p>Nenhum álbum foi encontrado</p>
-              : (
-                <div className="containerAlbums">
-                  {albumsList.map(
-                    (album) => (<AlbumCard
-                      album={ album }
-                      key={ album.collectionId }
-                    />),
-                  )}
-                </div>
-              )}
 
-          </div>
         </div>
       </div>
+
     );
   }
 }

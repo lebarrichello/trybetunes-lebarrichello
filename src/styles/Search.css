@@ -1,4 +1,4 @@
-.containerPage {
+.container__search {
   background-color: #041a12;
   display: flex;
   flex-direction: row;
@@ -7,10 +7,9 @@
 .containerS {
   display: flex;
   flex-direction: column;
-
 }
 
-.containerSearchBar {
+.searchbar {
   background-color: #041a12;
   display: flex;
   height: 150px;
@@ -102,3 +101,9 @@
 
 }
 
+@media screen and ( orientation : portrait ) {
+
+  .container__search {
+    flex-direction: column;
+  }
+}

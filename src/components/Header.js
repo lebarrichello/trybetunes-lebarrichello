@@ -28,55 +28,51 @@ class Header extends Component {
     return (
 
       <header data-testid="header-component">
-        <div className="logoHeader">
+
+        <div className="container__header-logo">
           <Link to="/">
             <h1>
               TrybeTunes
             </h1>
           </Link>
         </div>
+
         <nav>
           <Link to="/search" data-testid="link-to-search">
-            <FiSearch className="icon" />
+            <FiSearch className="icon-nav" />
             {' '}
             Pesquisa
           </Link>
           <Link to="/favorites" data-testid="link-to-favorites">
-            <FiHeart className="icon" />
+            <FiHeart className="icon-nav" />
             {' '}
             Favoritas
           </Link>
           <Link className="profile" to="/profile" data-testid="link-to-profile">
-            <FiUser className="icon" />
+            <FiUser className="icon-nav" />
             {' '}
             Perfil
-
           </Link>
         </nav>
-        <div className="containerUser">
+
+        <div className="container__header-user">
           { loading
             ? (
-              <>
-                <img
-                  className="header-profile-img"
-                  src="./images/default-profile.jpeg"
-                  alt=""
-                />
-                <div className="loadHeader">
-                  <Loading />
-                </div>
-              </>)
+              <div className="user-load">
+                <Loading />
+              </div>)
             : (
-              <>
+              <div className="user-infos">
                 <img src={ userImg } alt="" />
                 <p data-testid="header-user-name">{user}</p>
-              </>
+              </div>
             )}
         </div>
-        <div className="logoutHeader">
+
+        <div className="container__header-logout">
           <Link to="/">
             <button
-              className="btnLogout"
+              className="button-logout"
               type="submit"
             >
               <FiLogOut className="icon" />
