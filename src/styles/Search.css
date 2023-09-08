@@ -1,5 +1,4 @@
 .container__page-search {
-  background-color: aqua;
   display: flex;
   flex-direction: row;
 }
@@ -17,7 +16,7 @@
 /* Estilos para a searchbar */
 .searchbar {
   align-items: center;
-  background-color: palegreen;
+  background-color: #1fdf64;
   display: flex;
   height: 100px;
   justify-content: center;

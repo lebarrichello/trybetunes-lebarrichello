@@ -1,0 +1,4 @@
+.container_page-favorites {
+  display: flex;
+  flex-direction: row;
+}

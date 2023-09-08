@@ -5,12 +5,11 @@ class Loading extends Component {
   render() {
     return (
       <div className="loadContainer">
-        <p className="loadingText">Carregando...</p>
-        <div className="loading load1">{/* Carregando... */}</div>
-        <div className="loading load2">{/* Carregando... */}</div>
-        <div className="loading load3">{/* Carregando... */}</div>
-        <div className="loading load4">{/* Carregando... */}</div>
-        <div className="loading load5">{/* Carregando... */}</div>
+        <div className="loading load1" />
+        <div className="loading load2" />
+        <div className="loading load3" />
+        <div className="loading load4" />
+        <div className="loading load5" />
 
       </div>
     );

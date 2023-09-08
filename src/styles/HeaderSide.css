@@ -15,9 +15,6 @@ header a {
   text-decoration: none;
 }
 
-a:hover {
-  background-color: #6cbd26;
-}
 
 .container__header-logo {
   align-items: center;
@@ -48,6 +45,10 @@ nav {
   margin-right: 5px;
 }
 
+nav span:hover {
+  color: #1fdf64;
+}
+
 .profile {
   padding-right: 35px;
 }
@@ -72,6 +73,7 @@ nav {
   flex-direction: row;
   gap: 10px;
   justify-content: flex-start;
+  margin-bottom: 30px;
 }
 
 
@@ -98,8 +100,7 @@ nav {
 }
 
 .button-logout:hover {
-  border: 2px solid #6cbd26;
-  filter: drop-shadow(0 0  5px #6cbd26);
+  border: 2px solid #1fdf64;
 }
 
 .button-logout:active {

@@ -41,17 +41,17 @@ class Header extends Component {
           <Link to="/search" data-testid="link-to-search">
             <FiSearch className="icon-nav" />
             {' '}
-            Pesquisa
+            <span>Pesquisa</span>
           </Link>
           <Link to="/favorites" data-testid="link-to-favorites">
             <FiHeart className="icon-nav" />
             {' '}
-            Favoritas
+            <span>Favoritas</span>
           </Link>
           <Link className="profile" to="/profile" data-testid="link-to-profile">
             <FiUser className="icon-nav" />
             {' '}
-            Perfil
+            <span>Perfil</span>
           </Link>
         </nav>
 
