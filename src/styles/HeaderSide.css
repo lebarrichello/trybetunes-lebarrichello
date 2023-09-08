@@ -6,8 +6,8 @@ header {
   font-size: larger;
   height: 100vh;
   justify-content: left;
+  padding: 15px;
   text-align: center;
-  width: 280px;
 }
 
 header a {
@@ -30,7 +30,7 @@ a:hover {
   background-color: transparent;
 }
 
-.container__header-logo h1{
+.container__header-logo h1 {
   color: white;
 }
 
@@ -79,7 +79,6 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 15px;
   padding: 20px;
 }
 
@@ -88,7 +87,7 @@ nav {
 }
 
 .button-logout {
-  background: none;
+  background-color: transparent;
   border: 2px solid white;
   border-radius: 10px;
   color: white;
@@ -96,7 +95,6 @@ nav {
   font-size: large;
   padding: 10px;
   text-align: center;
-  width: 150px;
 }
 
 .button-logout:hover {
@@ -124,7 +122,6 @@ nav {
   }
 
   nav {
-    background-color: #6cbd26;
     flex-direction: row;
     gap: 15px;
     height: 0;
@@ -136,4 +133,20 @@ nav {
     font-size: medium;
   }
 
+}
+
+@media screen and ( max-width : 280px ) {
+
+  .container__header-logout {
+    padding: 0;
+  }
+
+  .button-logout {
+    padding: 0;
+  }
+
+  nav {
+    gap: 10px;
+    margin-left: 2px;
+  }
 }

@@ -51,53 +51,60 @@ class Search extends Component {
     const { nameArtist, searchArtist, albumsList,
       isButtonDisabled, loading } = this.state;
     return (
-      <div className="container__search" data-testid="page-search">
-        <Header />
 
-        <div className="searchbar">
-          {loading ? <Loading /> : (
-            <div>
-              <form className="search">
+      <div className="container__page-search">
+        <Header />
+        <div className="container__search" data-testid="page-search">
+
+          <div className="searchbar">
+            {loading ? <Loading /> : (
+
+              <form>
                 <input
-                  className="input"
                   type="text"
                   onChange={ (event) => this.validateInputSearch(event) }
                   value={ nameArtist }
                   data-testid="search-artist-input"
-                  placeholder="Busque pelo nome do artista ou banda"
+                  placeholder="O que voce quer ouvir ?"
                 />
                 <button
-                  className="btnSearch"
                   type="submit"
                   disabled={ isButtonDisabled }
                   data-testid="search-artist-button"
                   onClick={ (event) => this.handleSearch(event) }
                 >
-                  <FiSearch className="icon" />
+                  <FiSearch />
                 </button>
               </form>
-            </div>
-          )}
-        </div>
-        <div className="containerResultsArtists">
-          {searchArtist && (
-            <p>
-              {`Resultado de álbuns de: ${searchArtist}`}
-            </p>
-          )}
-          {!albumsList.length && searchArtist
-            ? <p>Nenhum álbum foi encontrado</p>
-            : (
-              <div className="containerAlbums">
-                {albumsList.map(
-                  (album) => (<AlbumCard
-                    album={ album }
-                    key={ album.collectionId }
-                  />),
-                )}
-              </div>
-            )}
 
+            )}
+          </div>
+
+          <div className="container__results">
+            {searchArtist && (
+              <p>
+                {`Resultado de álbuns para: ${searchArtist
+                  .split(' ')
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join(' ')}`}
+              </p>
+            )}
+            {!albumsList.length && searchArtist
+              ? <p>Nenhum álbum foi encontrado</p>
+              : (
+                <div className="container_albums">
+
+                  {albumsList.map(
+                    (album) => (<AlbumCard
+                      album={ album }
+                      key={ album.collectionId }
+                    />),
+                  )}
+                </div>
+
+              )}
+
+          </div>
         </div>
       </div>
 

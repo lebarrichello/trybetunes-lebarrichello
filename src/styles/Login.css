@@ -13,13 +13,15 @@
 
 * {
   border: 0;
+  bottom: 0;
   box-sizing: border-box;
   font-family: Manrope , sans-serif;
   margin: 0;
   padding: 0;
+  right: 0;
 }
 
-h1 {
+form h1 {
   color: #02120c;
   font-weight: 700;
   line-height: 1.5em;
@@ -30,7 +32,7 @@ h1 {
 
 .container {
   align-content: center;
-  background-color: #02120c;
+  background-color: hsl(0, 0%, 7%);
   display: flex;
   flex-wrap: wrap;
   height: 100vh;
@@ -40,7 +42,7 @@ h1 {
   width: 100vw;
 }
 
-form {
+.container form {
   animation: morph 8s ease-in-out infinite;
   background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
@@ -72,7 +74,7 @@ form {
 }
 
 
-form input {
+.container form input {
   background: transparent;
   border: 1px solid #02120c;
   border-radius: 40px;
@@ -83,16 +85,16 @@ form input {
   width: 100%;
 }
 
-form input:focus {
+.container form input:focus {
   outline: none;
 }
 
-form input::placeholder {
+.container form input::placeholder {
   color: #02120c;
   text-align: center;
 }
 
-form button {
+.container form button {
   background: #6cbd26;
   border: 2px solid #6cbd26;
   border-radius: 40px;
@@ -111,11 +113,11 @@ form button {
 
 }
 
-form button:hover {
+.container form button:hover {
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
 
-form button:disabled {
+.container form button:disabled {
   background: transparent;
   border: 1px solid #02120c;
 }

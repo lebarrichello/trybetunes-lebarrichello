@@ -1,109 +1,100 @@
+.container__page-search {
+  background-color: aqua;
+  display: flex;
+  flex-direction: row;
+}
+
+
 .container__search {
-  background-color: #041a12;
-  display: flex;
-  flex-direction: row;
-}
-
-.containerS {
-  display: flex;
+  background-color: #1d1d1d;
   flex-direction: column;
+  height: 100vh;
+  width: 100%;
 }
 
+/*   background-color: #6cbd26; */
+
+/* Estilos para a searchbar */
 .searchbar {
-  background-color: #041a12;
+  align-items: center;
+  background-color: palegreen;
   display: flex;
-  height: 150px;
+  height: 100px;
   justify-content: center;
-  width: 100vw;
 }
 
-.search {
-  border: 2px solid #c9eeaa;
-  border-radius: 40px;
+/* Estilos para o formulário */
+.searchbar form {
   display: flex;
-  flex-direction: row;
-  height: 40px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
+  max-width: 400px;
+  padding: 2em;
+  width: 400px;
 }
 
-.input {
+/* Estilos para o campo de entrada (input) */
+.searchbar input {
+  background: transparent;
+  border: 1px solid hsl(0, 0%, 7%);
+  border-radius: 40px;
+  color: hsl(0, 0%, 7%);
+  padding: 1em;
+  width: 100%; /* Ocupa todo o espaço disponível */
+}
+
+.searchbar input:focus {
+  outline: none;
+}
+
+.searchbar input::placeholder {
+  color: hsl(0, 0%, 7%);
+}
+
+/* Estilos para o botão */
+.searchbar button {
   background-color: transparent;
-  border: 0;
-  border-radius: 5px 0 0 5px;
-  color: white;
-  font-size: large;
-  padding: 9px;
-  width: 70%;
-}
-
-.input:focus {
-  outline: 0;
-}
-
-.input::placeholder {
-  color: rgba(255, 255, 255, 0.75);
-  text-align: center;
-}
-
-.btnSearch {
-  background: none;
-  border: 0;
-  border-radius: 0 5px 5px 0;
+  border: none;
+  border-radius: 40px;
   color: white;
   cursor: pointer;
   font-size: large;
-  margin-left: 70px;
-  padding: 9px;
+  margin-left: -3em; /* Ajusta a margem para sobrepor o campo de entrada */
+  padding: 1em;
 }
 
-.btnSearch .icon {
-  color: #c9eeaa;
-  font-size: 25px;
-}
-
-.btnSearch:active {
-  transform: scale(0.91);
-}
-
-.containerResultsArtists {
-  background-color: #041a12;
-  max-height: 100vh;
-  max-width: 100vw;
-}
-
-.containerResultsArtists p {
+.container__results {
   color: white;
-  font-size: x-large;
+  font-size: larger;
+  margin: 10px;
   text-align: center;
 }
 
-.containerAlbums {
-  background-color: #041a12;
+.container_albums {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
   justify-content: center;
-  margin-bottom: 20px;
-  max-height: 100vh;
-  max-width: 100vw;
-  overflow: auto;
+  margin-top: 10px;
+  max-height: 80vh; /* Usando 80% da altura da viewport */
+  overflow-x: auto;
+  overflow-y: auto;
 }
 
-@media only screen and ( min-width : 150px ) and ( max-width : 780px ) {
 
-  .search {
-    margin: 0 auto;
-    width: 95%;
-  }
+.container_albums::-webkit-scrollbar-track {
+  background-color: whitesmoke;
+}
 
+.container_albums::-webkit-scrollbar {
+  width: 6px;
+}
+
+.container_albums::-webkit-scrollbar-thumb {
+  background-color: palegreen;
 }
 
 @media screen and ( orientation : portrait ) {
 
-  .container__search {
+  .container__page-search {
     flex-direction: column;
   }
 }
