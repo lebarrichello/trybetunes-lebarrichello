@@ -1,120 +1,102 @@
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import { getFavoriteSongs } from '../services/favoriteSongsAPI';
-import getMusics from '../services/musicsAPI';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import MusicCard from '../components/MusicCard';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import getMusics from '../services/musicsAPI';
+import '../styles/Album.css';
 
-class Album extends Component {
-  constructor() {
-    super();
-    this.state = {
-      playlist: [],
-      loading: true,
-      favoritesList: [],
-    };
+function Album({ match }) {
+  const { id } = match.params;
 
-    this.toggleLoad = this.toggleLoad.bind(this);
-    this.updateFavMusic = this.updateFavMusic.bind(this);
-    this.recoverTime = this.recoverTime.bind(this);
+  const [musicList, setMusicList] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [favoritesList, setFavoritesList] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const fetchedMusicList = await getMusics(id);
+      setMusicList(fetchedMusicList);
+      setLoading(false);
+      console.log(fetchedMusicList);
+      updateFavoriteSongs();
+    }
+
+    fetchData();
+  }, [id]);
+
+  async function updateFavoriteSongs() {
+    const favoriteSongs = await getFavoriteSongs();
+    setFavoritesList(favoriteSongs);
   }
 
-  async componentDidMount() {
-    const { match } = this.props;
-    const { id } = match.params;
-    const playlist = await getMusics(id);
-    this.setState({
-      playlist,
-      loading: false,
-    });
-    this.updateFavMusic();
-  }
-
-  async updateFavMusic() {
-    const favSongs = await getFavoriteSongs();
-    this.setState({
-      favoritesList: favSongs,
-    });
-  }
-
-  toggleLoad() {
-    this.setState((currentState) => ({
-      loading: !currentState.loading,
-    }));
-  }
-
-  changeImgSize(url = '') {
+  function convertArtworkSize(url = '') {
     return url.replace(/100x100bb.jpg/, '300x300bb.jpg');
   }
 
-  recoverTime() {
-    const { playlist } = this.state;
-    const songsList = playlist.filter((_song, index) => index > 0);
-    const time = new Date(
+  function retrieveAlbumTime() {
+    const songsList = musicList.slice(1);
+    const accTime = new Date(
       songsList.reduce((accum, song) => accum + song.trackTimeMillis, 0),
     );
-
-    const millisHour = 3600000;
-    const millisMinute = 60000;
-    const millisSecond = 1000;
-    const hours = Math.floor(time / millisHour);
-    const minutes = Math.floor((time % millisHour) / millisMinute);
-    const seconds = Math
-      .floor(((time % millisHour) % millisMinute) / millisSecond);
-    return `${hours > 0 ? `${hours}h` : ''} \
-    ${minutes > 0 ? `${minutes}min` : ''} ${hours > 0 ? '' : `${seconds}s`}`;
+    const millisToHour = 3600000;
+    const millisToMinute = 60000;
+    const millisToSecond = 1000;
+    const hours = Math.floor(accTime / millisToHour);
+    const minutes = Math.floor((accTime % millisToHour) / millisToMinute);
+    const seconds = Math.floor(((accTime % millisToHour
+    ) % millisToMinute) / millisToSecond);
+    return `${hours > 0 ? `${hours}h` : ''} ${minutes > 0 ? `${minutes}min` : ''}
+     ${hours > 0 ? '' : `${seconds}s`}`;
   }
 
-  render() {
-    const { playlist, loading, favoritesList } = this.state;
-    const { thumbnail, artistName, collectionName,
-      genre, releaseDate, musicTrackCount } = playlist[0] || {};
-    return (
-      <div data-testid="page-album">
-        <Header />
-        <div>
-          {loading ? <Loading /> : (
-            <>
-              <div>
-                <img src={ this.changeImgSize(thumbnail) } alt="" />
-                <div>
-                  <h3 data-testid="artist-name">{artistName}</h3>
-                  <h2 data-testid="album-name">{collectionName}</h2>
-                  <div>
-                    <span>{genre}</span>
-                    <span>{releaseDate.split('-')[0]}</span>
-                    <span>
-                      {`${musicTrackCount} 
-                      ${musicTrackCount > 1 ? 'músicas' : 'música'}`}
-                    </span>
-                    <span>
-                      {this.recoverTime()}
-                    </span>
-                  </div>
+  return (
+    <div className="container_page-album">
+      <Header />
+      <div className="container_album">
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            <div className="container_infos-album">
+              <img src={ convertArtworkSize(musicList[0]?.artworkUrl100) } alt="" />
+              <div className="infos-album-desc">
+                <div className="infos-album">
+                  <span>{musicList[0]?.artistName}</span>
+                  <h2>{musicList[0]?.collectionName}</h2>
+                </div>
+                <div className="extra-info">
+                  <span>{musicList[0]?.primaryGenreName}</span>
+                  <span>{musicList[0]?.releaseDate.split('-')[0]}</span>
+                  <span>
+                    {`${musicList[0]?.trackCount} ${musicList[0]?.trackCount > 1
+                      ? 'músicas' : 'música'}`}
+
+                  </span>
+                  <span>{retrieveAlbumTime()}</span>
                 </div>
               </div>
-              <div>
-                {playlist.map((track, index) => (
-                  index > 0 && <MusicCard
-                    track={ track }
-                    key={ track.trackId }
-                    toggleLoadingHandler={ this.toggleLoad }
-                    favoritesList={ favoritesList }
-                    updateHandler={ this.updateFavMusic }
-                  />
-                ))}
-              </div>
-            </>
-          )}
-        </div>
+            </div>
+            <div className="songsListContainer">
+              {musicList.slice(1).map((track) => (
+                <MusicCard
+                  key={ track.trackId }
+                  track={ track }
+                  favoritesList={ favoritesList }
+                  updateHandler={ updateFavoriteSongs }
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 Album.propTypes = {
-  match: PropTypes.shape(PropTypes.o).isRequired,
+  match: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default Album;
