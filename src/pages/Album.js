@@ -81,8 +81,8 @@ class Album extends Component {
                 <img src={ this.convertArtworkSize(artworkUrl100) } alt="" />
                 <div className="infos-album-desc">
                   <div className="infos-album">
-                    <span>{musicList[0]?.artistName}</span>
-                    <h2>{musicList[0]?.collectionName}</h2>
+                    <span>{artistName}</span>
+                    <h2>{collectionName}</h2>
                   </div>
                   <div className="extra-info">
                     <span>{primaryGenreName}</span>
@@ -116,7 +116,7 @@ class Album extends Component {
 }
 
 Album.propTypes = {
-  match: PropTypes.objectOf(PropTypes.any).isRequired,
+  match: PropTypes.objectOf(PropTypes.a).isRequired,
 };
 
 export default Album;
