@@ -2,7 +2,7 @@
 
 Projeto desenvolvido no módulo de Front-End do curso de desenvolvimento web da Trybe
 
-<p>Acesse o projeto em produção <a href="https://starwars-planets-search-fawn.vercel.app/" target="_blank">clicando aqui</a></p>
+<p>Acesse o projeto em produção <a href="https://trybetunes-lebarrichello-jm8g.vercel.app/" target="_blank">clicando aqui</a></p>
 
 ## 🎯 Objetivo
 
