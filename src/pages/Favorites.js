@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FaRegHeart } from 'react-icons/fa';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
@@ -45,23 +46,32 @@ class Favorites extends Component {
     return (
       <div className="container_page-favorites">
         <Header />
-        <div>
-          {loading
-            ? <Loading />
-            : (
-              <>
-                {favoritesList.map((song) => (
-                  <MusicCard
-                    track={ song }
-                    key={ song.trackId }
-                    favoritesList={ favoritesList }
-                    toggleLoadingHandler={ this.toggleLoad }
-                    updateHandler={ this.updateFavMusic }
-                    showArtwork
-                  />))}
-                {!favoritesList.length && <p>Nenhuma música favoritada</p>}
-              </>
-            )}
+        <div className="container_favorites">
+          <div className="container_top-title">
+            <div><FaRegHeart className="icon-favorites" /></div>
+            <div className="top-title_text">
+              <span>Playlist</span>
+              <h1>Músicas Curtidas</h1>
+            </div>
+          </div>
+          <div className="container_songs-liked">
+            {loading
+              ? <Loading />
+              : (
+                <>
+                  {favoritesList.map((song) => (
+                    <MusicCard
+                      track={ song }
+                      key={ song.trackId }
+                      favoritesList={ favoritesList }
+                      toggleLoadingHandler={ this.toggleLoad }
+                      updateHandler={ this.updateFavMusic }
+                      showArtwork
+                    />))}
+                  {!favoritesList.length && <p>Nenhuma música favoritada</p>}
+                </>
+              )}
+          </div>
         </div>
       </div>
     );

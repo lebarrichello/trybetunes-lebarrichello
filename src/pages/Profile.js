@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
+import '../styles/Profile.css';
 
 class Profile extends Component {
   constructor() {
@@ -32,25 +33,33 @@ class Profile extends Component {
   render() {
     const { userName, userEmail, userBio, userImg, loading } = this.state;
     return (
-      <div data-testid="page-profile">
+      <div className="container_page-profile">
         <Header />
-        <div>
+        <div className="container_infos-profile">
           { loading ? <Loading /> : (
             <>
-              <div>
+              <div className="infos-profile_edit">
                 <img
                   src={ userImg }
                   alt=""
                   data-testid="profile-image"
                 />
-                <Link to="/profile/edit">Editar perfil</Link>
+                <Link to="/profile/edit">
+                  <button
+                    type="submit"
+                  >
+                    Editar perfil
+                  </button>
+                </Link>
               </div>
-              <h4>Nome</h4>
-              <p>{userName}</p>
-              <h4>E-mail</h4>
-              <p>{userEmail || 'Nenhum e-mail cadastrado'}</p>
-              <h4>Descrição</h4>
-              <p>{userBio || 'Nenhuma descrição cadastrada'}</p>
+              <div className="infos-profile">
+                <h4>Nome:</h4>
+                <p>{userName}</p>
+                <h4>E-mail:</h4>
+                <p>{userEmail || 'Nenhum e-mail cadastrado'}</p>
+                <h4>Descrição:</h4>
+                <p>{userBio || 'Nenhuma descrição cadastrada'}</p>
+              </div>
             </>
           )}
         </div>

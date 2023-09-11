@@ -1,4 +1,65 @@
 .container_page-favorites {
+  background-color: palevioletred;
   display: flex;
   flex-direction: row;
+}
+
+.container_favorites {
+  background-color: #1d1d1d;
+  color: white;
+  height: 100vh;
+  width: 100%;
+}
+
+.container_top-title {
+  align-items: center;
+  background: linear-gradient(90deg, #1fdf64
+  0%, #1bc85a
+  10%, #18b250
+  20%, #159c46
+  30%, #12853c
+  40%, #0f6f32
+  50%, #0c5928
+  60%, #09421e
+  70%, #062c14
+  100%, #1f9adf 100%);
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  height: 180px;
+}
+
+.container_top-title h1 {
+  font-weight: 700;
+}
+
+.icon-favorites {
+  color: white;
+  font-size: 100px;
+  margin-left: 20px;
+}
+
+.top-title-text {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.container_songs-liked {
+  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  max-height: 78vh; /* Usando 80% da altura da viewport */
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+
+@media screen and ( orientation : portrait ) {
+
+  .container_page-favorites {
+    flex-direction: column;
+  }
 }
