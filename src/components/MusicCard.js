@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { FiPlay } from 'react-icons/fi';
+import { FiHeart } from 'react-icons/fi';
 import { addSong, removeSong } from '../services/favoriteSongsAPI';
+import '../styles/MusicCard.css';
 
 class MusicCard extends Component {
   async handleFavorite({ target }) {
@@ -17,33 +18,16 @@ class MusicCard extends Component {
     toggleLoadingHandler();
   }
 
-  showAudio({ currentTarget }) {
-    const songContainer = document.querySelector('.songContainer');
-    const isMobile = getComputedStyle(songContainer).justifyContent === 'space-between';
-    if (!isMobile) {
-      currentTarget.classList.add('display-none');
-    }
-    const currentActive = document.querySelector('.active');
-    if (currentActive) {
-      currentActive.classList.remove('active');
-      currentActive.previousSibling.classList.remove('display-none');
-      currentActive.pause();
-    }
-    currentTarget.nextSibling.classList.add('active');
-    currentTarget.nextSibling.play();
-  }
-
   render() {
     const { track, favoritesList, showArtwork } = this.props;
     const { trackName, trackId, previewUrl,
       artworkUrl30, collectionName, trackNumber } = track;
     return (
-      <div>
+      <div className="music-player">
         {showArtwork
           && <img src={ artworkUrl30 } alt={ collectionName } />}
-        {!showArtwork && <span>{trackNumber}</span> }
+        {!showArtwork && <span>{trackNumber}</span>}
         <h4>{trackName}</h4>
-        <FiPlay size="1.6em" onClick={ (event) => this.showAudio(event) } />
         <audio
           data-testid="audio-component"
           src={ previewUrl }
@@ -62,8 +46,15 @@ class MusicCard extends Component {
             data-testid={ `checkbox-music-${trackId}` }
             onChange={ (event) => this.handleFavorite(event, trackId) }
             checked={ favoritesList.some((song) => song.trackId === trackId) }
+            style={ { display: 'none' } } // Esconde o checkbox original
           />
-          Favorita
+          <FiHeart
+            style={ {
+              color: favoritesList.some((song) => song.trackId === trackId)
+                ? 'green'
+                : 'gray', // Cor vermelha para favoritos marcados, cinza para não favoritos
+            } }
+          />
         </label>
       </div>
     );
@@ -75,10 +66,19 @@ MusicCard.defaultProps = {
 };
 
 MusicCard.propTypes = {
-  track: PropTypes.shape(PropTypes.o).isRequired,
+  track: PropTypes.shape({
+    trackName: PropTypes.string.isRequired,
+    trackId: PropTypes.number.isRequired,
+    previewUrl: PropTypes.string.isRequired,
+    artworkUrl30: PropTypes.string.isRequired,
+    collectionName: PropTypes.string.isRequired,
+    trackNumber: PropTypes.number.isRequired,
+  }).isRequired,
   toggleLoadingHandler: PropTypes.func.isRequired,
   updateHandler: PropTypes.func.isRequired,
-  favoritesList: PropTypes.shape(PropTypes.r).isRequired,
+  favoritesList: PropTypes.arrayOf(PropTypes.shape({
+    trackId: PropTypes.number.isRequired,
+  })).isRequired,
   showArtwork: PropTypes.bool,
 };
 

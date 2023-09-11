@@ -41,7 +41,7 @@ class Login extends Component {
     const { name, isButtonDisabled, logIn, loading } = this.state;
     return (
 
-      <div data-testid="page-login" className="container">
+      <div className="container_page-login">
 
         {loading === true
           ? <Loading />

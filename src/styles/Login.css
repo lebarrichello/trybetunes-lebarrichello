@@ -30,7 +30,7 @@ form h1 {
   text-align: center;
 }
 
-.container {
+.container_page-login {
   align-content: center;
   background-color: hsl(0, 0%, 7%);
   display: flex;
@@ -42,7 +42,7 @@ form h1 {
   width: 100vw;
 }
 
-.container form {
+.container_page-login form {
   animation: morph 8s ease-in-out infinite;
   background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
@@ -74,7 +74,7 @@ form h1 {
 }
 
 
-.container form input {
+.container_page-login form input {
   background: transparent;
   border: 1px solid #02120c;
   border-radius: 40px;
@@ -85,16 +85,16 @@ form h1 {
   width: 100%;
 }
 
-.container form input:focus {
+.container_page-login form input:focus {
   outline: none;
 }
 
-.container form input::placeholder {
+.container_page-login form input::placeholder {
   color: #02120c;
   text-align: center;
 }
 
-.container form button {
+.container_page-login form button {
   background: #6cbd26;
   border: 2px solid #6cbd26;
   border-radius: 40px;
@@ -113,11 +113,11 @@ form h1 {
 
 }
 
-.container form button:hover {
+.container_page-login form button:hover {
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
 
-.container form button:disabled {
+.container_page-login form button:disabled {
   background: transparent;
   border: 1px solid #02120c;
 }

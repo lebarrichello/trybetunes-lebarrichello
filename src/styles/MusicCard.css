@@ -1,0 +1,9 @@
+.music-player {
+  align-items: center;
+  display: flex;
+  gap: 20px;
+}
+
+.music-player img {
+  border-radius: 100%;
+}

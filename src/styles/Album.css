@@ -7,8 +7,8 @@
 .container_album {
   color: white;
   gap: 32px;
+  height: 100vh;
   width: 100vw;
-
 }
 
 .container_infos-album {
@@ -65,7 +65,8 @@
   content: '';
 }
 
-.songsListContainer {
+.container_songs-list {
+  background-color: #262626;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -75,29 +76,29 @@
   padding: 0 32px;
 }
 
-.songsListContainer h4 {
+.container_songs-list h4 {
   max-width: 60%;
 }
 
-.songsListContainer::-webkit-scrollbar-track {
+.container_songs-list::-webkit-scrollbar-track {
   background-color: whitesmoke;
 }
 
-.songsListContainer::-webkit-scrollbar {
+.container_songs-list::-webkit-scrollbar {
   width: 6px;
 }
 
-.songsListContainer::-webkit-scrollbar-thumb {
+.container_songs-list::-webkit-scrollbar-thumb {
   background-color: palegreen;
 }
 
 @media screen and ( max-width : 768px ) {
 
-  .songContainer {
+  .container_songs-list {
     justify-content: space-between;
   }
 
-  .songContainer h4 {
+  .container_songs-list h4 {
     margin-right: auto;
   }
 
