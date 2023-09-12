@@ -2,6 +2,9 @@
 
 Projeto desenvolvido no módulo de Front-End do curso de desenvolvimento web da Trybe
 
+[Gravacao de tela : Projeto Trybe Tunes.webm](https://github.com/lebarrichello/trybetunes-lebarrichello/assets/42211040/ccce5d0b-5542-4181-8836-34e9f3ad2af1)
+
+
 <p>Acesse o projeto em produção <a href="https://trybetunes-lebarrichello.vercel.app/" target="_blank">clicando aqui</a></p>
 
 ## 🎯 Objetivo
